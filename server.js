@@ -3,7 +3,8 @@ const cors = require('cors');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const port = process.env.PORT || 8090;
+const hostname = 'jenkins.home.local'
+const port = 8090;
 
 app.use(cors());
 app.get('/', (req, res) => {
@@ -67,6 +68,6 @@ app.get('/', (req, res) => {
 		res.json(users);
 	});
 	
-	server.listen(port, () => {
-		console.log('listening on port %d');
-	});
+	server.listen(port, hostname, () => {
+		console.log(`Server running at http://${hostname}:${port}/`);
+	 });
