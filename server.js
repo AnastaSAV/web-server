@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const http = require('http');
+const e = require('express');
 const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
@@ -14,7 +15,8 @@ app.post('/public', (req, res) => {
 	res.json([]);
 });
 app.get('/', (req, res) => {
-	res.send({message: 'hello www'})});
+	res.send({message: 'hello www'})
+});
 	
 	let users = [
 		{
@@ -63,7 +65,8 @@ app.get('/', (req, res) => {
 		res.json(users);
 	});
 	app.delete('/users/:id', (req, res) => {
-		users = users.filter(item => item.id !== id);
+		const id = +req.params.id;
+		users = users.filter(element => element.id !== id);
 		res.json(users);
 	});
 	
