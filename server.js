@@ -2,11 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const http = require('http');
-const e = require('express');
+const express = require('express');
+const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', (req, res) => {
 	res.send(__dirname + '/public');
 });
@@ -59,8 +63,7 @@ let users = [
 		name: 'Nikolay',
 		description: 'CTO',
 	},
-]
-
+];
 app.get('/users', (req, res) => {
 	res.json(users);
 });
@@ -69,19 +72,12 @@ app.delete('/users/:id', (req, res) => {
 	users = users.filter(element => element.id !== id);
 	res.json(users);
 });
-let goods = [
-	{
-		name: 'Iphone',
-		description: 'Smartphone',
-		price: '4500',
-	},
-];
+let goods = [];
 app.get('/goods', (req, res) => {
 	res.json(goods);
 }); 
 app.post('/goods', (req, res) => {
-	if(!req.body) return res.sendStatus(400);
-	req.body.push(goods);
+	goods.push({name: req.body?.name, description: req.body?.description, price: req.body?.price});
 	res.json(goods);
 }); 
 server.listen(port, () => {
