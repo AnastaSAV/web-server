@@ -76,7 +76,7 @@ app.get('/goods', (req, res) => {
 	res.json(goods);
 }); 
 app.post('/goods', (req, res) => {
-	goods.push({name: req.body?.name, description: req.body?.description, price: req.body?.price});
+	goods.push({name: req.body.name, description: req.body.description, price: req.body.price});
 	res.json(goods);
 }); 
 server.listen(port, () => {
