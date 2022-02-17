@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
 		price: '4500',
 		},
 	];
-	app.get('/goods', (req, res) => {
+	app.post('/goods', (req, res) => {
 		res.json(goods);
 	});
 	
