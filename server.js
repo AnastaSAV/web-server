@@ -69,16 +69,16 @@ app.get('/', (req, res) => {
 		users = users.filter(element => element.id !== id);
 		res.json(users);
 	});
-	let goods = [
-		{
-		name: 'Iphone',
-		description: 'Smartphone',
-		price: '4500',
-		},
-	];
-	app.get('/goods', (req, res) => {
-		res.json(goods);
-	}); 
+	// let goods = [
+	// 	{
+	// 	name: 'Iphone',
+	// 	description: 'Smartphone',
+	// 	price: '4500',
+	// 	},
+	// ];
+	// app.get('/goods', (req, res) => {
+	// 	res.json(goods);
+	// }); 
 	
 	// app.post('/goods', (req, res) => {
 	// 	res.json(goods);
