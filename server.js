@@ -80,9 +80,10 @@ app.get('/goods', (req, res) => {
 	res.json(goods);
 }); 
 app.post('/goods', (req, res) => {
-	if(!req.body) return res.sendStatus(400);
-	console.log(req.body);
-	res.send(`${req.body.goods.name}`)
+	const goods = req.body;
+	if(!goods) return res.sendStatus(400);
+	console.log(goods);
+	res.json(goods);
 }); 
 server.listen(port, () => {
 	console.log(`listening on :${port}`);
