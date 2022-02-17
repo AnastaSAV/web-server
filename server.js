@@ -76,9 +76,13 @@ app.get('/', (req, res) => {
 		price: '4500',
 		},
 	];
-	app.post('/goods', (req, res) => {
+	app.get('/goods', (req, res){
 		res.json(goods);
-	});
+	}); 
+	
+	// app.post('/goods', (req, res) => {
+	// 	res.json(goods);
+	// });
 	
 	server.listen(port, () => {
 		console.log(`listening on :${port}`);
