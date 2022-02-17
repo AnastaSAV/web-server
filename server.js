@@ -7,8 +7,8 @@ const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.get('/', (req, res) => {
 	res.send(__dirname + '/public');
 });
@@ -75,7 +75,7 @@ app.get('/goods', (req, res) => {
 	res.json(goods);
 }); 
 app.post('/goods', (req, res) => {
-	goods.push({name: req.body.name, description: req.body.description, price: req.body.price});
+	goods.push({name: req.body?.name, description: req.body?.description, price: req.body?.price});
 	res.json(goods);
 }); 
 server.listen(port, () => {
