@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const http = require('http');
-const express = require('express');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const port = process.env.PORT || 8090;
