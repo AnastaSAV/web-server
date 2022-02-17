@@ -69,6 +69,16 @@ app.get('/', (req, res) => {
 		users = users.filter(element => element.id !== id);
 		res.json(users);
 	});
+	let goods = [
+		{
+		name: 'Iphone',
+		description: 'Smartphone',
+		price: '4500',
+		},
+	];
+	app.get('/goods', (req, res) => {
+		res.json(goods);
+	});
 	
 	server.listen(port, () => {
 		console.log(`listening on :${port}`);
