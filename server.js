@@ -66,7 +66,7 @@ app.get('/users', (req, res) => {
 	res.json(users);
 });
 app.post('/users', (req, res) => {
-	users.push({id: req.body?.id, name: req.body?.name, price: description.body?.description});
+	users.push({id: req.body?.id, name: req.body?.name, description: req.body?.description});
 	res.json(users);
 });
 app.delete('/users/:id', (req, res) => {
