@@ -7,8 +7,8 @@ const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', (req, res) => {
 	res.send(__dirname + '/public');
 });
@@ -65,17 +65,22 @@ let users = [
 app.get('/users', (req, res) => {
 	res.json(users);
 });
+app.post('/users', (req, res) => {
+	users.push({name: req.body?.id, description: req.body?.name, price: req.body?.description});
+	res.json(users);
+});
 app.delete('/users/:id', (req, res) => {
 	const id = +req.params.id;
 	users = users.filter(element => element.id !== id);
 	res.json(users);
 });
+
 let goods = [];
 app.get('/goods', (req, res) => {
 	res.json(goods);
 }); 
 app.post('/goods', (req, res) => {
-	goods.push({name: req.body?.name, description: req.body?.description, price: req.body?.price});
+	goods.push({name: req.body.name, description: req.body.description, price: req.body.price});
 	res.json(goods);
 }); 
 server.listen(port, () => {
