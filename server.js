@@ -10,7 +10,7 @@ app.use(cors());
 app.use(function(req, res, next) {
 	res.setHeader("Content-Type", "application/x-www-form-urlencoded");
 	next();
-	req.setHeader("Content-Type", "application/x-www-form-urlencoded");
+	req.setHeader("Content-Type", "application/multipart/form-data");
 	next();
 });
 app.use(bodyParser.json());
