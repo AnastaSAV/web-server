@@ -8,6 +8,8 @@ const port = process.env.PORT || 8090;
 
 app.use(cors());
 app.use(function(req, res, next) {
+	res.setHeader("Content-Type", "application/x-www-form-urlencoded");
+	next();
 	req.setHeader("Content-Type", "application/x-www-form-urlencoded");
 	next();
 });
