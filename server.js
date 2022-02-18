@@ -6,9 +6,10 @@ const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
-app.use(cors());
+
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors());
 app.get('/', (req, res) => {
 	res.send(__dirname + '/public');
 });
