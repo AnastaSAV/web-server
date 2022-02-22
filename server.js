@@ -4,7 +4,7 @@ const app = express();
 const http = require('http');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
-const port = process.env.PORT || 8090;
+const port = process.env.PORT || 9001;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -66,23 +66,36 @@ app.get('/users', (req, res) => {
 	res.json(users);
 });
 app.post('/users', (req, res) => {
-	users.push({id: req.body?.id, name: req.body?.name, description: req.body?.description});
-	res.json(users);
-});
-app.delete('/users/:id', (req, res) => {
-	const id = +req.params.id;
-	users = users.filter(element => element.id !== id);
-	res.json(users);
-});
-
-let goods = [];
+	users.push(
+		{
+			id: req.body.id,
+			name: req.body.name,
+			description: req.body.description,
+		}
+		);
+		res.json(users);
+	});
+	app.delete('/users/:id', (req, res) => {
+		const id = +req.params.id;
+		users = users.filter(element => element.id !== id);
+		res.json(users);
+	});
+	// Goods
+	const goods = [];
+	
 app.get('/goods', (req, res) => {
 	res.json(goods);
 }); 
 app.post('/goods', (req, res) => {
-	goods.push({name: req.body.name, description: req.body.description, price: req.body.price});
-	res.json(goods);
-}); 
-server.listen(port, () => {
-	console.log(`listening on :${port}`);
-});
+	goods.push(
+		{
+			name: req.body.name,
+			description: req.body.description,
+			price: req.body.price,
+		}
+		);
+			res.json(goods);
+		}); 
+		server.listen(port, () => {
+			console.log(`listening on :${port}`);
+		});
