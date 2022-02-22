@@ -9,6 +9,11 @@ const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
 app.use(cors());
+
+const options = {
+	uploadDir: os.tmpdir(),
+	autoClean: true
+ };
 app.use(formData.parse(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -22,10 +27,6 @@ app.post('/public', (req, res) => {
 app.get('/', (req, res) => {
 	res.send({message: 'hello www'})
 });
-const options = {
-	uploadDir: os.tmpdir(),
-	autoClean: true
- };
 
 let users = [
 	{
