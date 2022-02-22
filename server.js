@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const os = require("os");
+const formData = require('express-form-data');
 const http = require('http');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const port = process.env.PORT || 8090;
 
 app.use(cors());
+app.use(formData.parse(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', (req, res) => {
@@ -19,6 +22,10 @@ app.post('/public', (req, res) => {
 app.get('/', (req, res) => {
 	res.send({message: 'hello www'})
 });
+const options = {
+	uploadDir: os.tmpdir(),
+	autoClean: true
+ };
 
 let users = [
 	{
